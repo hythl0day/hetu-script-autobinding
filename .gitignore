@@ -21,6 +21,5 @@ doc/api/
 *.js.map
 .idea/
 gen/*
-bin/
 generate-glue-code.sh
 utils/gen/

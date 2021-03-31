@@ -1,2 +1,2 @@
 mkdir -p bin
-dart compile exe lib/main.dart -o bin/ht-binding-generator
+dart compile exe bin/ht-bind.dart -o bin/ht-bind
