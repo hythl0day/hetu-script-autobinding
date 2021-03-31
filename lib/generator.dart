@@ -791,9 +791,10 @@ Future<Map<String, dynamic>?> generate(String path) async {
     await _handleError(path);
     if (exitCode == 2) {
       try {
+        final sdkVersionString = Platform.version.split(' ').first;
         var parseResult = parseFile(
             path: path,
-            featureSet: FeatureSet.fromEnableFlags2(sdkLanguageVersion: Version.parse(Platform.version), flags: []),
+            featureSet: FeatureSet.fromEnableFlags2(sdkLanguageVersion: Version.parse(sdkVersionString), flags: []),
             throwIfDiagnostics: false);
         var compilationUnit = parseResult.unit;
         //遍历AST

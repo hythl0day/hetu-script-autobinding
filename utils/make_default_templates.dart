@@ -9,16 +9,14 @@ Future<List<FileSystemEntity>> dirContents(Directory dir) {
   var lister = dir.list(recursive: true);
   lister.listen((file) {
     var fileName = path.basename(file.path);
-    if (file.statSync().type == FileSystemEntityType.file &&
-        fileName.endsWith('.mustache')) {
+    if (file.statSync().type == FileSystemEntityType.file && fileName.endsWith('.mustache')) {
       files.add(file);
     }
   }, onDone: () => completer.complete(files));
   return completer.future;
 }
 
-void renderTemplate(
-    String content, Map<String, dynamic> templateVars, String opath) async {
+void renderTemplate(String content, Map<String, dynamic> templateVars, String opath) async {
   ;
   var template = Template(content, lenient: true, htmlEscapeValues: false);
   var output = template.renderString(templateVars);
